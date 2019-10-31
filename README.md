@@ -26,23 +26,24 @@ Things you may want to cover:
 
 
 
-## userテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index:true,null: false,unique:true|
+|name|string|null: false,unique:true|
+|email|string|null: false,unique:true|
 
 ### Association
 - has_many :groups, through: :members
 - has_many :members
 - has_many :messages
 
-## messageテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|content|string|null: false|
-|image|string|null: false|
+|content|string||
+|image|string||
 |user_id|references|null: false,foreign_key: true|
 |group_id|references|null: false,foreign_key: true|
 
