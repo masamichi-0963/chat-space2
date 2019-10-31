@@ -25,7 +25,45 @@ Things you may want to cover:
 # chat-space
 
 
-## groups_usersテーブル
+
+## userテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|index:true,null: false,unique:true|
+
+### Association
+- has_many :groups, through: :members
+- has_many :members
+- has_many :messages
+
+## messageテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|content|string|null: false|
+|image|string|null: false|
+|user_id|references|null: false,foreign_key: true|
+|group_id|references|null: false,foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
+
+## groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null:false|
+
+### Association
+
+- has_many :groups, through: :members
+- has_many :members
+- has_many :messages
+
+
+## memmbersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
