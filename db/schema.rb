@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191031023938) do
+ActiveRecord::Schema.define(version: 20191030113509) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20191031023938) do
   end
 
   create_table "groups_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "group_id"
+    t.integer  "groups_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_groups_users_on_group_id", using: :btree
+    t.index ["groups_id"], name: "index_groups_users_on_groups_id", using: :btree
     t.index ["user_id"], name: "index_groups_users_on_user_id", using: :btree
   end
 
@@ -47,10 +47,11 @@ ActiveRecord::Schema.define(version: 20191031023938) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "groups", column: "groups_id"
   add_foreign_key "groups_users", "users"
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
