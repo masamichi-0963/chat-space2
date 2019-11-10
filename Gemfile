@@ -58,3 +58,6 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'mini_magick'
+group :development do
+  gem 'devise'
+end
