@@ -1,6 +1,6 @@
-class CreateGroupsUsers < ActiveRecord::Migration[5.0]
+class CreateGroupUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :groups_users do |t|
+    create_table :group_users do |t|
       t.references :groups, foreign_key: true
       t.references :user, foreign_key: true
       t.timestamps
