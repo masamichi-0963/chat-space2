@@ -58,6 +58,7 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'font-awesome-sass'
 group :development do
   gem 'devise'
 end
