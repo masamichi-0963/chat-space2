@@ -1,106 +1,119 @@
 .chat {
-  width: calc(100% - 300px);
+  width: calc(100vw - 300px);
+  height: 100vh;
+  color: $chat-body;
   float: right;
-  .header {
-    box-sizing: border-box;
+  overflow: scroll;
+  &__info {
+    position: absolute;
     height: 100px;
-    padding: 0 40px;
-    .left-header {
+    width: calc(100vw - 300px);
+    border-bottom: solid 1px $border;
+    background-color: $white;
+    &-left {
       float: left;
-      &__title {
-        color: #333;
+      padding-left: 40px;
+      &__name {
+        color: $chat-name;
         font-size: 20px;
-        margin-top: 35px;
+        padding-top: 35px;
+        padding-bottom: 15px;
       }
       &__members {
-        @include flexbox;
-        color: $light_gray;
+        color: $light-glay;
         font-size: 12px;
-        margin-top: 15px;
-        .member {
-          display: inline-block;
-          padding-right: 5px;
-        }
       }
     }
-    .right-header {
-      border: 1px solid $light_blue;
-      color: $light_blue;
+    &-right {
       float: right;
-      height: 40px;
-      line-height: 40px;
-      margin-top: 28px;
-      padding: 0 20px;
-      &__button {
-        color: $light_blue;
+      a.btn {
+        display: block;
         text-decoration: none;
+        height:40px;
+        line-height: 40px;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin: 28px 0px;
+        margin-right: 40px;
+        text-align: center;
+        color: #38AEF0;
+        border:solid 2px $light-blue;
+        transition: 0.3s;
       }
     }
   }
 
-  .messages {
-    background-color: #FAFAFA;
-    box-sizing: border-box;
-    padding: 46px 40px 0px;
-    height: calc(100% - 100px - 90px);
-    .message {
-      .upper-message {
-        display: flex;
-        &__user-name {
-          color: $black;
+  &__contents {
+    padding-left: 40px;
+    padding-top: 126px;
+    padding-right: 40px;
+    padding-bottom: 90px;
+    &__content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      &-top{
+        &__user {
+          float: left;
+          padding-right: 10px;
           font-size: 16px;
           font-weight: bold;
         }
-        &__date {
-          color: $light_gray;
+        &__timestamp {
+          float: left;
           font-size: 12px;
-          padding-left: 10px;
+          color: $light-glay;
         }
       }
-      .lower-message {
-        margin-top: 10px;
-        &__content {
-          color: $black;
-          font-size: 14px;
-          margin-bottom: 40px;
-        }
+      &__text {
+        font-size: 14px;
+        padding-top: 10px;
       }
     }
   }
 
   .form {
-    background-color: #DDDDDD;
-    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     height: 90px;
-    padding: 20px 50px 20px 40px;
+    width: calc(100vw - 300px);
+    background-color: #DCDCDC;
     &__message {
-      border: none;
-      float: left;
-      height: 50px;
-      width: calc(100% - 150px);
-    }
-    &__mask {
+      position: absolute;
       background-color: $white;
-      float: left;
       height: 50px;
-      padding-right: 10px;
-      &__image {
-        font-size: 20px;
-        line-height: 50px;
-      }
-      .hidden {
-        display: none;
-      }
-    }
-    &__submit {
-      background-color: $light_blue;
+      top: 20px;
+      left: 40px;
+      right: 155px;
+      padding-left: 10px;
+      width: calc(100% - 205px);
       border: none;
-      color: $white;
-      float: right;
-      font-size: 16px;
+    }
+    .fa-image{
+      position: absolute;
+      top: 35px;
+      right: 155px;
+      padding-right: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .btn {
+      position: absolute;
+      background-color: $light-blue;
       height: 50px;
-      margin-left: 15px;
-      padding: 0 30px;
+      width: 100px;
+      top: 20px;
+      right: 40px;
+      float: right;
+      display: block;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
+      line-height: 50px;
+      text-align: center;
+      color: $white;
+      font-size: 16px;
     }
   }
-} 
+}
