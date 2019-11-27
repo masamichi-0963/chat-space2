@@ -3,16 +3,16 @@ $(function(){
    if ( message.image ) {
      var html =
       `<div class="chat__contents__content" data-message-id=${message.id}>
-         <div class="upper-message">
-           <div class="upper-message__user-name">
+         <div class="chat__contents__content-top">
+           <div class="chat__contents__content-top__user>
              ${message.user_name}
            </div>
-           <div class="upper-message__date">
+           <div class="chat__contents__content-top__timestamp">
              ${message.date}
            </div>
          </div>
-         <div class="lower-message">
-           <p class="lower-message__content">
+         <div class="chat__contents__content__text">
+           <p class="chat__contents__content__text">
              ${message.content}
            </p>
          </div>
@@ -21,17 +21,17 @@ $(function(){
      return html;
    } else {
      var html =
-      `<div class="chat__contents__content" data-message-id=${message.id}>
-         <div class="upper-message">
-           <div class="upper-message__user-name">
+      `<div class="chat__contents_content" data-message-id=${message.id}>
+         <div class="chat__contents_content-top">
+           <div class="chat__contents__content-top__user">
              ${message.user_name}
            </div>
-           <div class="upper-message__date">
+           <div class="chat__contents__content-top__timestamp">
              ${message.date}
            </div>
          </div>
-         <div class="lower-message">
-           <p class="lower-message__content">
+         <div class="chat__contents__content__text">
+           <p class="chat__contents__content__text">
              ${message.content}
            </p>
          </div>
