@@ -44,10 +44,10 @@
   }
 
   &__contents {
-    padding-left: 40px;
-    padding-top: 90px;
-    padding-right: 40px;
-    padding-bottom: 90x;
+    height: calc(100vh - 190px);
+    padding: 46px 40px;
+    background-color: #fafafa;
+    overflow: scroll;
     &__content {
       padding-top: 20px;
       padding-bottom: 20px;
