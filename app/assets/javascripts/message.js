@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
    if ( message.image ) {
      var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="chat__contents__content" data-message-id=${message.id}>
          <div class="upper-message">
            <div class="upper-message__user-name">
              ${message.user_name}
@@ -21,7 +21,7 @@ $(function(){
      return html;
    } else {
      var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="chat__contents__content" data-message-id=${message.id}>
          <div class="upper-message">
            <div class="upper-message__user-name">
              ${message.user_name}
@@ -39,7 +39,7 @@ $(function(){
      return html;
    };
  }
-$('.js-form').on('submit', function(e){
+$('#new_message').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
  var url = $(this).attr('action')
@@ -53,9 +53,9 @@ $('.js-form').on('submit', function(e){
  })
   .done(function(data){
     var html = buildHTML(data);
-    $('.messages').append(html);
-    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
-    $('form')[0].reset();
+    $('.chat__contents').append(html);
+    $('.chat__contents').animate({scrollTop: $('.chat__contents')[0].scrollHeight}, 'fast');   
+    $('#new_message')[0].reset();
   })
    .fail(function(){
      alert('error');
