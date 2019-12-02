@@ -8,8 +8,9 @@
             = @group.name
         .chat__info-left__members
           %p
-            Members:
-            = @current_user
+            Members: 
+            - @group.users.each do |group_member|
+              %div #{group_member.name}&nbsp;
       .chat__info-right
         = link_to 'Edit', edit_group_path(@group.id), class: "btn"
     .chat__contents
