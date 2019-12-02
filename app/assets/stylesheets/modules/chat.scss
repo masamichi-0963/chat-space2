@@ -22,6 +22,7 @@
       &__members {
         color: $light-glay;
         font-size: 12px;
+        display: flex;
       }
     }
     &-right {
@@ -45,7 +46,7 @@
 
   &__contents {
     height: calc(100vh - 190px);
-    padding: 46px 40px;
+    padding: 100px 40px 100px;
     background-color: #fafafa;
     overflow: scroll;
     &__content {
