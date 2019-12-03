@@ -5,11 +5,11 @@ $(function(){
      var html =
       `<div class="chat__contents__content" data-message-id=${message.id}>
          <div class="chat__contents__content-top">
-           <div class="chat__contents__content-top__user>
+           <div class="chat__contents__content-top__user">
              ${message.user_name}
            </div>
            <div class="chat__contents__content-top__timestamp">
-             ${message.date}
+             ${message.created_at}
            </div>
          </div>
          <div class="chat__contents__content__text">
@@ -22,13 +22,13 @@ $(function(){
      return html;
    } else {
      var html =
-      `<div class="chat__contents_content" data-message-id=${message.id}>
-         <div class="chat__contents_content-top">
+      `<div class="chat__contents__content" data-message-id=${message.id}>
+         <div class="chat__contents__content-top">
            <div class="chat__contents__content-top__user">
              ${message.user_name}
            </div>
            <div class="chat__contents__content-top__timestamp">
-             ${message.date}
+             ${message.created_at}
            </div>
          </div>
          <div class="chat__contents__content__text">
@@ -63,26 +63,33 @@ $('#new_message').on('submit', function(e){
    });
    return false;
  });
-});
+
 
 var reloadMessages = function() {
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
   //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-  last_message_id = 'chat__contents__content'
+  var last_message_id = $('.chat__contents__content:last').data("message-id");
   $.ajax({
     //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
-    url: location.href,
+    url: 'api/messages',
     //ルーティングで設定した通りhttpメソッドをgetに指定
     type: 'get',
     dataType: 'json',
     //dataオプションでリクエストに値を含める
-    data: {id: last_message_id}
+    data: {last_id: last_message_id}
   })
   .done(function(messages) {
-    console.log('success');
+    var insertHTML = '';
+    messages.forEach(function (message) {
+      insertHTML = buildHTML(message);
+      $('.chat__contents').append(insertHTML);
+      $('.chat__contents').animate({scrollTop: $('.chat__contents')[0].scrollHeight}, 'fast');       });
   })
   .fail(function() {
-    console.log('error');
+    alert('自動更新に失敗しました');
   });
-  setInterval(reloadMessages, 7000);
+  return false;
+}
 };
-
+setInterval(reloadMessages, 7000);
+});
