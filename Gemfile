@@ -60,6 +60,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
 gem "jquery-rails"
+group :production do
+  gem 'unicorn', '5.4.1'
+end
 group :development do
   gem 'devise'
 end
